@@ -11,6 +11,28 @@ client.on("ready", () => {
   client.user.setActivity('y\'all suffer for sch', { type: 'WATCHING' });
 })
 
+var currentdate = new Date(); 
+var dayNumber = currentdate.getDay();
+var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var day = days[dayNumber];
+
+var choice = ['Perhaps', 'No, but you are.', 'You\'ll have to ask them for that', 'I think so, but it\'s questionable'];
+if (message.content.startsWith("-Is ")) {
+  message.channel.send(choice[Math.floor(Math.random() * choice.length)])
+}
+let Embed = new MessageEmbed()
+if ((message.content.startsWith('-Avatar')) && (!message.mentions.users.first())) {
+  Embed.setThumbnail(message.author.displayAvatarURL())
+  Embed.setColor(`RANDOM`)
+  return message.channel.send(Embed)
+}
+if ((message.content.startsWith('-Avatar')) && (message.mentions.users.first)) {
+  let User = message.mentions.users.first()
+  Embed.setThumbnail(User.displayAvatarURL())
+  Embed.setColor(`RANDOM`)
+  return message.channel.send(Embed)
+}
+
 client.on("message", message => {
 if (message.content === '-Hello') {
   message.channel.send("Hello to you too")
@@ -33,22 +55,6 @@ if (message.content === '-Test') {
 }
 if (message.content === '-Creator') {
   message.channel.send('<@815031062853189642>')
-}
-var choice = ['Perhaps', 'No, but you are.', 'You\'ll have to ask them for that', 'I think so, but it\'s questionable'];
-if (message.content.startsWith("-Is ")) {
-  message.channel.send(choice[Math.floor(Math.random() * choice.length)])
-}
-let Embed = new MessageEmbed()
-if ((message.content.startsWith('-Avatar')) && (!message.mentions.users.first())) {
-  Embed.setThumbnail(message.author.displayAvatarURL())
-  Embed.setColor(`RANDOM`)
-  return message.channel.send(Embed)
-}
-if ((message.content.startsWith('-Avatar')) && (message.mentions.users.first)) {
-  let User = message.mentions.users.first()
-  Embed.setThumbnail(User.displayAvatarURL())
-  Embed.setColor(`RANDOM`)
-  return message.channel.send(Embed)
 }
 if (message.content === '-CM') {
   message.channel.send("Tuesday: 11am-1pm")
@@ -88,10 +94,6 @@ if (!(message.author.id === '353177950033674240') && (message.content === "-HW")
 if (message.content === '-Py API') {
   message.channel.send("Discord's Python Documentation: https://discordpy.readthedocs.io/en/stable/api.html")
 }
-var currentdate = new Date(); 
-var dayNumber = currentdate.getDay();
-var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-var day = days[dayNumber];
 if (message.content === '-Time') {
   message.channel.send(currentdate.toLocaleString());
   message.channel.send(day)
