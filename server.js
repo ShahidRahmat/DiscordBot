@@ -11,12 +11,52 @@ client.on("ready", () => {
   client.user.setActivity('y\'all suffer for sch', { type: 'WATCHING' });
 })
 
+client.on("message", message => {
+ 
 var currentdate = new Date(); 
 var dayNumber = currentdate.getDay();
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var day = days[dayNumber];
-
-var choice = ['Perhaps', 'No, but you are.', 'You\'ll have to ask them for that', 'I think so, but it\'s questionable'];
+/*
+var monthNumber = currentdate.getMonth();
+var month = months[monthNumber]
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var date = currentdate.getDate();
+var year = currentdate.getFullYear();
+var second = currentdate.getSeconds();
+var minute = currentdate.getMinutes();
+*/
+var UTChour = parseInt(currentdate.getHours());
+var hour = (UTChour + 8);
+var second = currentdate.getSeconds();
+var minute = currentdate.getMinutes();
+if (hour>12) {
+  hour -= 12;
+  var period = "PM";
+}else if (hour<12) {
+  var period = "AM";
+}
+var currentTime = (hour+':'+minute+':'+second+" "+period+"*");
+if (message.content === '-Time') {
+  message.channel.send(currentdate.toLocaleString());
+  message.channel.send(currentTime)
+}
+if (message.content === '-Today') {
+  if (day == 'Monday') {
+    message.channel.send('PRG: \n12pm-3pm \nFP: \n4pm-6pm')  
+}else if (day == 'Friday') {
+    message.channel.send('CM: \n10am-12pm \nPRG: \n2pm-4pm')
+}else if (day == 'Tuesday') {
+    message.channel.send('DSF: \n9am-11am \nPRG: \n11am-1pm')
+}else if (day == 'Thursday') {
+  message.channel.send('DP: \n11am-1pm \nCSF: \n2pm-4pm')
+}else if ((day == 'Saturday') || (day == 'Sunday')) {
+  message.channel.send('There are no classes today.')
+}else if (day == 'Wednesday') {
+  message.channel.send('The module timings are unavailable for today due to the varying timetables.')
+}
+}
+var choice = ['Perhaps', 'No, but you are.', 'You\'ll have to ask them for that', 'I think so, but it\'s questionable', 'It is Certain', 'As I see it, yes', 'Most likely, yeah', 'Yes, without a doubt', 'Signs point to yes', 'Maybe I\'ll have the answer if you ask again later', 'I think it\'s better not to tell you now', 'I don\'t have an answer to that', 'Don\'t count on it', 'My reply is no', 'My sources say no', 'Very doubtful', 'I think we both know the answer to that', 'I respectfully decline to answer', 'No way, not a chance', 'It\'s so obvious I didn\'t think you\'d need to ask me'];
 if (message.content.startsWith("-Is ")) {
   message.channel.send(choice[Math.floor(Math.random() * choice.length)])
 }
@@ -31,15 +71,19 @@ if ((message.content.startsWith('-Avatar')) && (message.mentions.users.first)) {
   Embed.setThumbnail(User.displayAvatarURL())
   Embed.setColor(`RANDOM`)
   return message.channel.send(Embed)
-}
-
-client.on("message", message => {
+}  
 if (message.content === '-Hello') {
   message.channel.send("Hello to you too")
+}
+if (message.content === '-Coursemology') {
+  message.channel.send('Coursemology link: https://coursemology.org/')
 }
 if (message.content === '-Help') {
   message.channel.send("You can say Hello, Bye, check the times of lessons and more")
   message.channel.send("Or ask <@815031062853189642>")
+}
+if (message.content === '-MeL') {
+  message.channel.send('MeL NP: https://mel.np.edu.sg/ultra/course')
 }
 if (message.content === '-JS API') {
   message.channel.send('Discord JS Documentation: https://discord.js.org/#/docs/main/stable/general/welcome')
@@ -94,25 +138,6 @@ if (!(message.author.id === '353177950033674240') && (message.content === "-HW")
 if (message.content === '-Py API') {
   message.channel.send("Discord's Python Documentation: https://discordpy.readthedocs.io/en/stable/api.html")
 }
-if (message.content === '-Time') {
-  message.channel.send(currentdate.toLocaleString());
-  message.channel.send(day)
-}
-if (message.content === '-Today') {
-  if (day == 'Monday') {
-    message.channel.send('PRG: \n12pm-3pm \nFP: \n4pm-6pm')  
-}else if (day == 'Friday') {
-    message.channel.send('CM: \n10am-12pm \nPRG: \n2pm-4pm')
-}else if (day == 'Tuesday') {
-    message.channel.send('DSF: \n9am-11am \nPRG: \n11am-1pm')
-}else if (day == 'Thursday') {
-  message.channel.send('DP: \n11am-1pm \nCSF: \n2pm-4pm')
-}else if ((day == 'Saturday') || (day == 'Sunday')) {
-  message.channel.send('There are no classes today.')
-}else if (day == 'Wednesday') {
-  message.channel.send('The module timings are unavailable for today due to the varying timetables.')
-}
-}
 })
-
-client.login('TOKEN');
+var TOKEN = process.env.TOKEN
+client.login(TOKEN);
