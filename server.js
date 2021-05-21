@@ -15,14 +15,15 @@ client.on("message", message => {
 if (message.content === '-Hello') {
   message.channel.send("Hello to you too")
 }
-if (message.content === '-Coursemology') {
-  message.channel.send('Coursemology link: https://coursemology.org/')
+if (message.content === '-Help') {
+  message.channel.send("You can say Hello, Bye, check the times of lessons and more")
+  message.channel.send("Or ask <@815031062853189642>")
 }
-if (message.content === '-MeL') {
-  message.channel.send('MeL NP: https://mel.np.edu.sg/ultra/course')
-}
-if (message.content === '-API') {
+if (message.content === '-JS API') {
   message.channel.send('Discord JS Documentation: https://discord.js.org/#/docs/main/stable/general/welcome')
+}
+if (message.content === '-Bye') {
+  message.channel.send("Bye, See you next time!")
 }
 if (message.content === '-Say bye') {
   message.channel.send('Bye peeps(for the night)')
@@ -83,6 +84,32 @@ if ((message.author.id === '353177950033674240') && (message.content === "-HW"))
   }
 if (!(message.author.id === '353177950033674240') && (message.content === "-HW")) {
     message.channel.send("Wednesday: 1pm-3pm")
+}
+if (message.content === '-Py API') {
+  message.channel.send("Discord's Python Documentation: https://discordpy.readthedocs.io/en/stable/api.html")
+}
+var currentdate = new Date(); 
+var dayNumber = currentdate.getDay();
+var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var day = days[dayNumber];
+if (message.content === '-Time') {
+  message.channel.send(currentdate.toLocaleString());
+  message.channel.send(day)
+}
+if (message.content === '-Today') {
+  if (day == 'Monday') {
+    message.channel.send('PRG: \n12pm-3pm \nFP: \n4pm-6pm')  
+}else if (day == 'Friday') {
+    message.channel.send('CM: \n10am-12pm \nPRG: \n2pm-4pm')
+}else if (day == 'Tuesday') {
+    message.channel.send('DSF: \n9am-11am \nPRG: \n11am-1pm')
+}else if (day == 'Thursday') {
+  message.channel.send('DP: \n11am-1pm \nCSF: \n2pm-4pm')
+}else if ((day == 'Saturday') || (day == 'Sunday')) {
+  message.channel.send('There are no classes today.')
+}else if (day == 'Wednesday') {
+  message.channel.send('The module timings are unavailable for today due to the varying timetables.')
+}
 }
 })
 
