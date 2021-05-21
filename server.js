@@ -8,37 +8,50 @@ client.on("guildMemberAdd", member => {
 }) 
 const {MessageEmbed} = require('discord.js')
 client.on("ready", () => {
-  client.user.setActivity('y\'all suffer for sch', { type: 'WATCHING' });
+  client.user.setActivity('some dumb ass idiot write code for me', { type: 'WATCHING' });
 })
 
 client.on("message", message => {
- 
+var choice = ['Perhaps', 'No, but you are.', 'You\'ll have to ask them for that', 'I think so, but it\'s questionable', 'It is Certain', 'As I see it, yes', 'Most likely, yeah', 'Yes, without a doubt', 'Signs point to yes', 'Maybe I\'ll have the answer if you ask again later', 'I think it\'s better not to tell you now', 'I don\'t have an answer to that', 'Don\'t count on it', 'My reply is no', 'My sources say no', 'Very doubtful', 'I think we both know the answer to that', 'I respectfully decline to answer', 'No way, not a chance', 'It\'s so obvious I didn\'t think you\'d need to ask me'];
+if (message.content.startsWith("-Is ")) {
+  message.channel.send(choice[Math.floor(Math.random() * choice.length)])
+}
+let Embed = new MessageEmbed()
+if ((message.content.startsWith('-Avatar')) && (!message.mentions.users.first())) {
+  Embed.setThumbnail(message.author.displayAvatarURL())
+  Embed.setColor(`RANDOM`)
+  return message.channel.send(Embed)
+}
+if ((message.content.startsWith('-Avatar')) && (message.mentions.users.first)) {
+  let User = message.mentions.users.first()
+  Embed.setThumbnail(User.displayAvatarURL())
+  Embed.setColor(`RANDOM`)
+  return message.channel.send(Embed)
+}
 var currentdate = new Date(); 
 var dayNumber = currentdate.getDay();
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var day = days[dayNumber];
-/*
+
 var monthNumber = currentdate.getMonth();
-var month = months[monthNumber]
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var month = months[monthNumber]
 var date = currentdate.getDate();
 var year = currentdate.getFullYear();
-var second = currentdate.getSeconds();
-var minute = currentdate.getMinutes();
-*/
 var UTChour = parseInt(currentdate.getHours());
 var hour = (UTChour + 8);
 var second = currentdate.getSeconds();
 var minute = currentdate.getMinutes();
+var currentDate = (date+" "+month+" "+year+". "+day);
 if (hour>12) {
   hour -= 12;
   var period = "PM";
 }else if (hour<12) {
   var period = "AM";
 }
-var currentTime = (hour+':'+minute+':'+second+" "+period+"*");
+var currentTime = (hour+':'+minute+':'+second+" "+period);
 if (message.content === '-Time') {
-  message.channel.send(currentdate.toLocaleString());
+  message.channel.send(currentDate)
   message.channel.send(currentTime)
 }
 if (message.content === '-Today') {
@@ -56,22 +69,6 @@ if (message.content === '-Today') {
   message.channel.send('The module timings are unavailable for today due to the varying timetables.')
 }
 }
-var choice = ['Perhaps', 'No, but you are.', 'You\'ll have to ask them for that', 'I think so, but it\'s questionable', 'It is Certain', 'As I see it, yes', 'Most likely, yeah', 'Yes, without a doubt', 'Signs point to yes', 'Maybe I\'ll have the answer if you ask again later', 'I think it\'s better not to tell you now', 'I don\'t have an answer to that', 'Don\'t count on it', 'My reply is no', 'My sources say no', 'Very doubtful', 'I think we both know the answer to that', 'I respectfully decline to answer', 'No way, not a chance', 'It\'s so obvious I didn\'t think you\'d need to ask me'];
-if (message.content.startsWith("-Is ")) {
-  message.channel.send(choice[Math.floor(Math.random() * choice.length)])
-}
-let Embed = new MessageEmbed()
-if ((message.content.startsWith('-Avatar')) && (!message.mentions.users.first())) {
-  Embed.setThumbnail(message.author.displayAvatarURL())
-  Embed.setColor(`RANDOM`)
-  return message.channel.send(Embed)
-}
-if ((message.content.startsWith('-Avatar')) && (message.mentions.users.first)) {
-  let User = message.mentions.users.first()
-  Embed.setThumbnail(User.displayAvatarURL())
-  Embed.setColor(`RANDOM`)
-  return message.channel.send(Embed)
-}  
 if (message.content === '-Hello') {
   message.channel.send("Hello to you too")
 }
