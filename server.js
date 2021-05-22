@@ -7,8 +7,9 @@ client.on("guildMemberAdd", member => {
   }
 }) 
 const {MessageEmbed} = require('discord.js')
+
 client.on("ready", () => {
-  client.user.setActivity('some dumb ass idiot write code for me', { type: 'WATCHING' });
+  client.user.setActivity('myself have an existential crisis', { type: 'WATCHING' });
 })
 
 client.on("message", message => {
@@ -54,6 +55,27 @@ if (hour>24) {
   hour -= 12;
   var period = "AM";
 }
+var top = Math.floor(Math.random() * 30);
+//var top = 1000;
+var i;
+var top = 3;
+if (message.content.startsWith("-Ping")) {
+  var victim = message.mentions.users.first();
+  if (victim != '815031062853189642') {
+    for (i =0; i < top; i++) {
+      message.channel.send("<@" + victim + ">")
+    }
+} else if (victim == '815031062853189642') {
+  message.channel.send("You tried but...")
+  message.channel.send("No lol")
+}
+}
+var rejection = ['What future?', 'It\'s not looking too bright', 'No chiobu for you', 'You can try but it seems bad', 'Dark.']
+if ((message.content === '-My future') && !(message.author.id === '417614832037003266')) {
+  message.channel.send(rejection[Math.floor(Math.random() * rejection.length)])
+} else if ((message.content === '-My future') && (message.author.id === '417614832037003266')) {
+  message.channel.send("Very bright, chiobu in Malaysia will look for you")
+}
 var currentTime = (hour+':'+minute+':'+second+" "+period);
 if (message.content === '-Time') {
   message.channel.send(currentDate)
@@ -72,15 +94,6 @@ if (message.content === '-Tomorrow') {
   message.channel.send('There are no classes tomorrow.')
 }else if (day == 'Wednesday') {
   message.channel.send('DP: \n11am-1pm \nCSF: \n2pm-4pm')
-}
-}
-var top = Math.floor(Math.random() * 30);
-//var top = 1000;
-var i;
-if (message.content.startsWith("-Ping")) {
-  var victim = message.mentions.users.first();
-  for (i = 0; i < top; i++) {
-    message.channel.send("<@"+victim+">")
 }
 }
 if (message.content === '-Today') {
