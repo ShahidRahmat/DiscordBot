@@ -13,7 +13,7 @@ client.on("ready", () => {
 
 client.on("message", message => {
 var choice = ['Perhaps', 'No, but you are.', 'You\'ll have to ask them for that', 'I think so, but it\'s questionable', 'It is Certain', 'As I see it, yes', 'Most likely, yeah', 'Yes, without a doubt', 'Signs point to yes', 'Maybe I\'ll have the answer if you ask again later', 'I think it\'s better not to tell you now', 'I don\'t have an answer to that', 'Don\'t count on it', 'My reply is no', 'My sources say no', 'Very doubtful', 'I think we both know the answer to that', 'I respectfully decline to answer', 'No way, not a chance', 'It\'s so obvious I didn\'t think you\'d need to ask me'];
-if (message.content.startsWith("-Is ")) {
+if ((message.content.startsWith("-Is ")) || (message.content.startsWith("-Does "))) {
   message.channel.send(choice[Math.floor(Math.random() * choice.length)])
 }
 let Embed = new MessageEmbed()
@@ -43,16 +43,45 @@ var hour = (UTChour + 8);
 var second = currentdate.getSeconds();
 var minute = currentdate.getMinutes();
 var currentDate = (date+" "+month+" "+year+". "+day);
-if (hour>12) {
+var day2number = (dayNumber + 1);
+var day2 = days[day2number];
+if (hour>24) {
+  hour -= 24;
+  var period = "AM";
+}else if ((hour<12) && (period != "PM")) {
+  var period = "AM";
+}else if ((hour>12) && (hour < 24)) {
   hour -= 12;
-  var period = "PM";
-}else if (hour<12) {
   var period = "AM";
 }
 var currentTime = (hour+':'+minute+':'+second+" "+period);
 if (message.content === '-Time') {
   message.channel.send(currentDate)
   message.channel.send(currentTime)
+}
+if (message.content === '-Tomorrow') {
+  if (day == 'Monday') {
+    message.channel.send('DSF: \n9am-11am \nPRG: \n11am-1pm')  
+}else if (day == 'Sunday'){
+    message.channel.send('PRG: \n12pm-3pm \nFP: \n4pm-6pm')
+}else if (day == 'Tuesday') {
+    message.channel.send('The module timings are unavailable for tomorrow due to the varying timetables.')
+}else if (day == 'Thursday') {
+  message.channel.send('CM: \n10am-12pm \nPRG: \n2pm-4pm')
+}else if ((day == 'Saturday') || (day == 'Friday')) {
+  message.channel.send('There are no classes tomorrow.')
+}else if (day == 'Wednesday') {
+  message.channel.send('DP: \n11am-1pm \nCSF: \n2pm-4pm')
+}
+}
+var top = Math.floor(Math.random() * 30);
+//var top = 1000;
+var i;
+if (message.content.startsWith("-Ping")) {
+  var victim = message.mentions.users.first();
+  for (i = 0; i < top; i++) {
+    message.channel.send("<@"+victim+">")
+}
 }
 if (message.content === '-Today') {
   if (day == 'Monday') {
