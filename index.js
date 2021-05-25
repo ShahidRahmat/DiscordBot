@@ -178,4 +178,4 @@ if (message.content === '-Py API') {
   message.channel.send("Discord's Python Documentation: https://discordpy.readthedocs.io/en/stable/api.html")
 }
 })
-client.login('ODQyNDA4NDQwNjEyNTIwMDE2.YJ03_w.4fYdmMozB9VjXVhfuv_ynxTv3KA');
+client.login('ODQyNDA4NDQwNjEyNTIwMDE2.YJ03_w.F1d72Yc-vPs1WnWvX44dDVwnj5M');
