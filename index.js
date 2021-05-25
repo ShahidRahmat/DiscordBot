@@ -178,5 +178,4 @@ if (message.content === '-Py API') {
   message.channel.send("Discord's Python Documentation: https://discordpy.readthedocs.io/en/stable/api.html")
 }
 })
-var TOKEN = process.env.TOKEN
-client.login(TOKEN);
+client.login('ODQyNDA4NDQwNjEyNTIwMDE2.YJ03_w.4fYdmMozB9VjXVhfuv_ynxTv3KA');
