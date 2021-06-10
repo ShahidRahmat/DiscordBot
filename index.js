@@ -2,9 +2,9 @@ let Discord = require("discord.js");
 let client = new Discord.Client();
 
 client.on("guildMemberAdd", member => {
-  if (member.guild.id === "833675504728801290") {
+  if (member.guild.id === "GUILD_ID") {
     client.channels.cache
-      .get("833675504728801297")
+      .get("CHANNEL_ID")
       .send(`Welcome to the server, ${member}!`);
   }
 });
@@ -33,11 +33,11 @@ client.on("message", message => {
   var i;
   if (message.content.startsWith("-Ping")) {
     var victim = message.mentions.users.first();
-    if (victim != "815031062853189642") {
+    if (victim != "USER_ID") {
       for (i = 0; i < top; i++) {
         message.channel.send("<@" + victim + ">");
       }
-    } else if (victim == "815031062853189642") {
+    } else if (victim == "USER_ID") {
       message.channel.send("You tried but...");
       message.channel.send("No lol");
     }
@@ -61,7 +61,7 @@ client.on("message", message => {
     var index_no = commands.indexOf(cmd)
     message.channel.send(response[index_no])
   }
-  if (message.author.id === "353177950033674240") {
+  if (message.author.id === "USER_ID") {
     var j_cmd = ['-Week', '-HW', '-COMMS']
     var j_res = ['Monday: \nPRG: 12pm-3pm \nFP: 4pm-6pm \n\nTuesday: \nDSF: 9am-11am \nCM: 11am-1pm\n\nWednesday:\nHW: 8am-10pm\nCOMMS: 1pm-4pm\n\nThursday: \nDP: 11am-1pm \nCSF: 2pm-4pm\n\nFriday: \nCM: 10am-12pm \nPRG: 2pm-4pm',
                 "Wednesday: 8am-10am", "Wednesday: 1pm-4pm"]
@@ -70,7 +70,7 @@ client.on("message", message => {
       message.channel.send(j_res[index_no])
   }
   }
-   if (!(message.author.id === "353177950033674240")) {
+   if (!(message.author.id === "USER_ID")) {
     var r_cmd = ['-Week', '-HW', '-COMMS']
     var r_res = ["Monday: \nPRG: 12pm-3pm \nFP: 4pm-6pm \n\nTuesday: \nDSF: 9am-11am \nCM: 11am-1pm\n\nWednesday:\nCOMMS: 9am-12pm\nHW: 1pm-3pm\n\nThursday: \nDP: 11am-1pm \nCSF: 2pm-4pm\n\nFriday: \nCM: 10am-12pm \nPRG: 2pm-4pm"
                 , "Wednesday: 1pm-3pm", "Wednesday: 9am-12pm"]
@@ -92,32 +92,11 @@ client.on("message", message => {
   }
   var currentdate = new Date();
   var dayNumber = currentdate.getDay();
-  var days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
+  var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var day = days[dayNumber];
 
   var monthNumber = currentdate.getMonth();
-  var months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   var month = months[monthNumber];
   var date = currentdate.getDate();
   var year = currentdate.getFullYear();
@@ -147,14 +126,14 @@ client.on("message", message => {
   ];
   if (
     message.content === "-My future" &&
-    !(message.author.id === "417614832037003266")
+    !(message.author.id === "USER_ID(G)")
   ) {
     message.channel.send(
       rejection[Math.floor(Math.random() * rejection.length)]
     );
   } else if (
     message.content === "-My future" &&
-    message.author.id === "417614832037003266"
+    message.author.id === "USER_ID(G)"
   ) {
     message.channel.send("Very bright, chiobu in Malaysia will look for you");
   }
@@ -187,7 +166,7 @@ client.on("message", message => {
              'He was just going through a stage.','He just needed a little space.','Because they make up everything.','Throw him in the mainstream.', 'A nervous wreck','Gets jalapeño business!'
              ,'Put lox on it.','Being named \'Justin\'','Because you should never drink and derive.','A receding hare-line.','A cat has claws at the end of paws; A comma is a pause at the end of a clause.']
   var blackmail = ['REMOVED']
-  if (message.channel.id == '836263896976719873') {
+  if (message.channel.id == 'CHANNEL_ID(B)') {
     var quote_num = (Math.floor(Math.random() * (blackmail.length +1)))
     var quote = (blackmail[quote_num]);
     if (cmd === ('-Quote')) {
@@ -207,10 +186,6 @@ client.on("message", message => {
   ) {
     message.channel.send("Did you mean '-Tomorrow'?");
   }
-    /*
-if (message.author.id === '353177950033674240') {
-  message.channel.send('DP Tryhard')
-}*/
 });
 var TOKEN = process.env.TOKEN;
 client.login(TOKEN);
