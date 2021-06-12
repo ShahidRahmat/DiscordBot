@@ -51,7 +51,7 @@ client.on("message", message => {
                  "Discord JS Documentation: https://discord.js.org/#/docs/main/stable/general/welcome", "Bot is online and working.",
                  "<@815031062853189642>", "PRG: \nMonday: 12pm-3pm \nFriday: 2pm-4pm  \nFP: \nMonday: 4pm-6pm \nDSF: \nTuesday: 9am-11am \nCM: \nTuesday: 11am-1pm \nFriday: 10am-12pm \nDP: \nThursday: 11am-1pm \nCSF: \nThursday: 2pm-4pm",
                  "https://discord.com/channels/833675504728801290/833675504728801297/847058564006412308", "https://discord.com/channels/833675504728801290/833675504728801297/849274058596024330",
-                 "School: -All, -Week, -(Any day of the week), -Today, -Tomorrow, -(Shortform for any module), -Tests, -Assessments\nOthers: -Time, -Avatar (someone), -My future, -Is (any question), -Does (any question), -Tell a joke",
+                 "School: -All, -Week, -(Any day of the week), -Today, -Tomorrow, -(Shortform for any module), -Tests, -Assessments\nOthers: -Time, -Avatar (someone), -My future, -Is (any question), -Does (any question), \n               -Tell a joke, -Hug (@someone), -Slap (@someone), -Kiss (@someone), -Shoot (@someone), -Punch (@someone)",
                  "Tuesday: 11am-1pm\nBlk 31, #05-02 \nFriday: 10am-12pm\nBlk 27, #06-10", "Tuesday: 9am-11am\nBlk 31, #05-02", "Monday: 12pm-3pm\nBlk 27, #07-04 \nFriday: 2pm-4pm\nBlk 27, #06-10",
                  "Thursday: 11am-1pm\nBlk 27, #04-03","Thursday: 2pm-4pm\nBlk 31, #05-12", "Monday: 4pm-6pm\nBlk 27, #07-04", "PRG: \n12pm-3pm \nFP: \n4pm-6pm",
                  "DSF: \n9am-11am \nCM: \n11am-1pm", "DP: \n11am-1pm \nCSF: \n2pm-4pm", "CM: \n10am-12pm \nPRG: \n2pm-4pm", "There are no classes on that day.", 
@@ -186,6 +186,58 @@ client.on("message", message => {
   ) {
     message.channel.send("Did you mean '-Tomorrow'?");
   }
+  var hug = ['https://tenor.com/view/hugs-sending-virtual-hug-sending-hugs-loading-heart-gif-16923416','https://tenor.com/view/bunny-cute-cuddling-hug-love-gif-15162403', 'https://tenor.com/view/animated-love-hug-sweet-gif-8330882',
+'https://tenor.com/view/cat-hug-back-hug-notice-me-attention-to-me-gif-14227401','https://tenor.com/view/mochi-peachcat-mochi-peachcat-hug-pat-gif-19092449','https://tenor.com/view/ghosthug-gif-7626784']
+  if (message.content.startsWith('-Hug')) {
+      var hug_index = (Math.floor(Math.random() * ((hug.length)+1)))
+      var hug_gif = hug[hug_index]
+      var sender = message.author.id
+      var receiver = message.mentions.users.first()
+      message.channel.send("<@"+sender+">"+ " gives a hug to " + "<@"+receiver+">")
+      message.channel.send(hug_gif)
+      }
+  var slap = ['https://tenor.com/view/slap-angry-mad-pissed-pissedoff-gif-5428698','https://tenor.com/view/pikachu-slap-fight-mad-no-gif-16415016','https://tenor.com/view/peach-cat-slap-angry-mad-gif-15310661',
+'https://tenor.com/view/batman-slap-robin-slap-gif-10206784','https://tenor.com/view/nope-stupid-slap-in-the-face-phone-gif-15151334','https://tenor.com/view/spank-tom-and-jerry-tom-puppy-gif-5196956',
+"https://tenor.com/view/slap-bear-slap-me-you-gif-17942299"]
+  if (message.content.startsWith('-Slap')) {
+      var slap_index = (Math.floor(Math.random() * ((slap.length)+1)))
+      var slap_gif = slap[slap_index]
+      var sender = message.author.id
+      var receiver = message.mentions.users.first()
+      message.channel.send("<@"+sender+">"+ " slaps " + "<@"+receiver+">")
+      message.channel.send(slap_gif)
+      }
+  var kiss = ['https://tenor.com/view/peach-cat-forehead-kiss-sweet-cute-gif-15289763', 'https://tenor.com/view/adorable-cat-heart-love-dodge-gif-12373953', 'https://tenor.com/view/love-you-lots-kiss-peachcat-gif-13985240', 'https://tenor.com/view/milk-and-mocha-kiss-love-in-love-gif-11453877',
+              'https://tenor.com/view/bear-blow-a-kiss-love-hearts-kissing-gif-11674749', 'https://tenor.com/view/kisses-love-couple-kiss-muah-gif-16851922']
+  if (message.content.startsWith('-Kiss')) {
+      var kiss_index = (Math.floor(Math.random() * ((kiss.length)+1)))
+      var kiss_gif = kiss[kiss_index]
+      var sender = message.author.id
+      var receiver = message.mentions.users.first()
+      message.channel.send("<@"+sender+">"+ " sends a kiss to " + "<@"+receiver+">")
+      message.channel.send(kiss_gif)
+      }
+  var punch = ['https://tenor.com/view/anime-kawaii-love-punch-gif-12542726', 'https://tenor.com/view/funny-lilo-punch-gif-12971422', 'https://tenor.com/view/lulugifs-charlie-brown-lucy-peanuts-punch-gif-15768734','https://tenor.com/view/cat-cute-adorable-punch-gif-17822730',
+               'https://tenor.com/view/saitama-one-punch-man-gif-4973550','https://tenor.com/view/brown-cony-sorry-punch-gif-13627939']
+  if (message.content.startsWith('-Punch')) {
+      var punch_index = (Math.floor(Math.random() * ((punch.length)+1)))
+      var punch_gif = punch[punch_index]
+      var sender = message.author.id
+      var receiver = message.mentions.users.first()
+      message.channel.send("<@"+sender+">"+ " punches " + "<@"+receiver+">")
+      message.channel.send(punch_gif)
+      }
+  var shoot =['https://tenor.com/view/gun-shoot-recoil-gif-15178145','https://tenor.com/view/shoot-dance-gun-dance-cartoon-gun-dance-shooting-at-feet-bugs-bunny-shooting-dance-gif-17378914','https://tenor.com/view/family-guy-ripaim-random-fire-out-of-control-fire-gif-5980510',
+'https://tenor.com/view/gun-gif-4564141','https://tenor.com/view/shooting-cat-angry-rage-furious-gif-5266895','https://tenor.com/view/seal-shoot-shot-eggplant-cute-gif-16533278',
+'https://tenor.com/view/kermit-shoot-lol-gun-frog-gif-16181496']
+  if (message.content.startsWith('-Shoot')) {
+      var shoot_index = (Math.floor(Math.random() * ((shoot.length)+1)))
+      var shoot_gif = shoot[shoot_index]
+      var sender = message.author.id
+      var receiver = message.mentions.users.first()
+      message.channel.send("<@"+sender+">"+ " shoots at " + "<@"+receiver+">")
+      message.channel.send(shoot_gif)
+      }
 });
 var TOKEN = process.env.TOKEN;
 client.login(TOKEN);
